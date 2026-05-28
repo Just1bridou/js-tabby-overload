@@ -1,3 +1,4 @@
+import './helpers-setup.js';
 import Vue from 'vue';
 import VueCodemirror from 'vue-codemirror';
 

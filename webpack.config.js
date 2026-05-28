@@ -30,7 +30,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules\/(?!(striptags)\/).*/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -47,11 +47,31 @@ module.exports = {
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
+  plugins: [
+    // Replace the lazy-cache-based utils with a webpack-compatible eager-require shim.
+    // lazy-cache rewrites the global `require` at module-load time, which breaks
+    // webpack's static analysis and causes a "Cannot find module '.'" runtime error.
+    new webpack.NormalModuleReplacementPlugin(
+      /handlebars-helpers[\/\\]lib[\/\\]utils[\/\\]utils\.js$/,
+      path.resolve(__dirname, 'src/handlebars-helpers-utils-shim.js')
+    ),
+    new webpack.NormalModuleReplacementPlugin(
+      /create-frame[\/\\]utils\.js$/,
+      path.resolve(__dirname, 'src/create-frame-utils-shim.js')
+    )
+  ],
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     historyApiFallback: true,
     noInfo: true,
     overlay: true
+  },
+  node: {
+    fs: 'empty',
+    path: true,
+    child_process: 'empty',
+    module: 'empty',
+    readline: 'empty'
   },
   performance: {
     hints: false
