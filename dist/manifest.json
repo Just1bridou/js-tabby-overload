@@ -1,17 +1,17 @@
 {
-    "name": "JS Tabby",
-    "description": "A Chrome extension to replace your new tabs with a simple javascript codepad and console",
-    "author": "Justin ANTHOINE-MILHOMME <justin.milhomme@gmail.com>",
-    "version": "1.0.7",
-    "chrome_url_overrides" : {
-        "newtab": "index.html"
-    },
-    "sandbox": {
-        "pages": ["sandbox/codepad.html"]
-    },
-    "icons": {
-        "128": "assets/icon.png"
-    },
-    "offline_enabled": true,
-    "manifest_version": 3
- }
+  "name": "JS Tabby",
+  "description": "A Chrome extension to replace your new tabs with a simple javascript codepad and console",
+  "author": "Justin ANTHOINE-MILHOMME <justin.milhomme@gmail.com>",
+  "version": "2.0.0",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "sandbox": {
+    "pages": ["sandbox/codepad.html"]
+  },
+  "icons": {
+    "128": "assets/icon.png"
+  },
+  "offline_enabled": true,
+  "manifest_version": 3
+}
